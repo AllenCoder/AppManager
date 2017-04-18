@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingBottom="10dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgApp"
+            android:layout_width="60.0dp"
+            android:layout_height="80.0dp"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/btCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="一键复制"
+            android:layout_below="@id/imgApp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:descendantFocusability="blocksDescendants"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10.0dp">
+
+        <TextView
+            android:textColor="#ffffd700"
+            android:id="@+id/apkName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dp"
+            android:layout_marginTop="5.0dp" />
+
+        <TextView
+            android:textColor="#ffffd700"
+            android:id="@+id/pkgName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dp"
+            android:layout_marginTop="5.0dp"
+            android:text="pkg.name"
+            android:layout_below="@id/apkName" />
+
+        <TextView
+            android:textColor="#ffffd700"
+            android:id="@+id/apkSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.0dp"
+            android:layout_below="@id/pkgName"
+            android:layout_alignLeft="@id/pkgName" />
+
+        <TextView
+            android:textColor="#ffffd700"
+            android:id="@+id/apkVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/pkgName"
+            android:layout_toRightOf="@id/apkSize"
+            android:layout_below="@id/apkSize"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:textColor="#ffffd700"
+            android:id="@+id/sigmd5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dp"
+            android:layout_marginTop="5.0dp"
+            android:layout_below="@id/apkVersion" />
+    </RelativeLayout>
+</LinearLayout>
