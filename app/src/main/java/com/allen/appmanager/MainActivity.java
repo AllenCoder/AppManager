@@ -1,3 +1,21 @@
+/*
+ *
+ *  * Copyright  2017 [AllenCoderr]
+ *  *
+ *  * Licensed under the Apache License, Version 2.0 (the "License");
+ *  * you may not use this file except in compliance with the License.
+ *  * You may obtain a copy of the License at
+ *  *
+ *  *     http://www.apache.org/licenses/LICENSE-2.0
+ *  *
+ *  * Unless required by applicable law or agreed to in writing, software
+ *  * distributed under the License is distributed on an "AS IS" BASIS,
+ *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  * See the License for the specific language governing permissions and
+ *  * limitations under the License.
+ *
+ */
+
 package com.allen.appmanager;
 
 import android.content.ClipboardManager;
@@ -62,17 +80,13 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.addItemDecoration(new DividerGridItemDecoration(MainActivity.this,R.drawable.divider));
         mRecyclerView.setAdapter(adapter);
-        Observable<String> observable = Observable.create(new ObservableOnSubscribe<String>() {
+        Observable<List<AppInfo>> observable = Observable.create(new ObservableOnSubscribe<List<AppInfo>>() {
             @Override
-            public void subscribe(ObservableEmitter<String> e) throws Exception {
-                //执行一些其他操作
-                //.............
-                //执行完毕，触发回调，通知观察者
-                e.onNext("我来发射数据");
-                queryAppInfo();
+            public void subscribe(ObservableEmitter<List<AppInfo>> appInfo) throws Exception {
+                appInfo.onNext(queryAppInfo());
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
-        Observer<String> observer = new Observer<String>() {
+        Observer<List<AppInfo>> observer = new Observer<List<AppInfo>>() {
             @Override
             public void onSubscribe(Disposable d) {
 
@@ -80,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             //观察者接收到通知,进行相关操作
-            public void onNext(String aLong) {
-                System.out.println("我接收到数据了");
+            public void onNext(List<AppInfo> aLong) {
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -91,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onComplete() {
-                adapter.notifyDataSetChanged();
+
             }
         };
         observable.subscribe(observer);
@@ -107,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     // 获得所有启动Activity的信息，类似于Launch界面
-    public void queryAppInfo() {
+    public List<AppInfo> queryAppInfo() {
         PackageManager pm = this.getPackageManager(); // 获得PackageManager对象
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -140,10 +154,11 @@ public class MainActivity extends AppCompatActivity {
                 appInfo.setmVersion(getVersionName(pkgName));
                 appInfo.setSigmd5(getSignMd5Str(pkgName));
 //                appInfo.setIntent(launchIntent);
-                mlistAppInfo.add(appInfo); // 添加至列表中
+                 mlistAppInfo.add(appInfo); // 添加至列表中
             }
+            return mlistAppInfo;
         }
-
+        return null;
     }
 
     public void onClick(AppInfo appinfo) {
