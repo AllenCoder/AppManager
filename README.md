@@ -5,17 +5,16 @@
 4. 异步的耗时查询用到了 [Rxjava2.0 ][1]
 5. 列表RecyclerView适配器用的是我们的官方  [BaseRecyclerViewAdapterHelper][2]
 6. 获取App 应用大小 采用AIDL接口实现
-7. Google Play 下载地址 [https://play.google.com/store/apps/details?id=com.allen.appmanager][6]
+7. Google Play 下载地址 [https://play.google.com/store/apps/details?id=com.allen.appmanager][3]
+8. App本地下载地址[https://o6bw6tmdt.qnssl.com/app-release.apk][4]
 
-8. ![enter description here](./image/image1.png)
-9. ![enter description here](./image/image2.png)
+9. ![enter description here](./image/image1.png)
+10. ![enter description here](./image/image2.png)
 
 ## 效果图
 
 
   [1]: https://github.com/ReactiveX/RxJava
   [2]: https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-  [3]: ./image/GB%5BM8_JOZ_J%606A%5DJA3%29L~JR_1.png "GB[M8_JOZ_J`6A]JA3&#41;L~JR"
-  [4]: ./images/06FP5VIN97S4Z9UN4A%285BQP.png "06FP5VIN97S4Z9UN4A&#40;5BQP"
-  [5]: ./image/image2.png
-  [6]: https://play.google.com/store/apps/details?id=com.allen.appmanager
+  [3]: https://play.google.com/store/apps/details?id=com.allen.appmanager
+  [4]: https://o6bw6tmdt.qnssl.com/app-release.apk
