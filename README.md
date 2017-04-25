@@ -6,16 +6,16 @@
 5. 列表RecyclerView适配器用的是我们的官方  [BaseRecyclerViewAdapterHelper][2]
 6. 获取App 应用大小 采用AIDL接口实现
 7. Google Play 下载地址 [https://play.google.com/store/apps/details?id=com.allen.appmanager][6]
-7. ![enter description here][3]
-8. ![enter description here][4]
-9. ![enter description here][5]
+
+8. ![enter description here](./image/image1.png)
+9. ![enter description here](./image/image2.png)
 
 ## 效果图
 
 
   [1]: https://github.com/ReactiveX/RxJava
   [2]: https://github.com/CymChad/BaseRecyclerViewAdapterHelper
-  [3]: ./images/GB%5BM8_JOZ_J%606A%5DJA3%29L~JR_1.png "GB[M8_JOZ_J`6A]JA3&#41;L~JR"
+  [3]: ./image/GB%5BM8_JOZ_J%606A%5DJA3%29L~JR_1.png "GB[M8_JOZ_J`6A]JA3&#41;L~JR"
   [4]: ./images/06FP5VIN97S4Z9UN4A%285BQP.png "06FP5VIN97S4Z9UN4A&#40;5BQP"
-  [5]: ./images/%5DYQ9_P%29D%5DJ4QCW03N%5DM@%29TM.png "]YQ9_P&#41;D]J4QCW03N]M@&#41;TM"
+  [5]: ./image/image2.png
   [6]: https://play.google.com/store/apps/details?id=com.allen.appmanager
