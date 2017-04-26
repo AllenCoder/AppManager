@@ -5,7 +5,7 @@
 4. 异步的耗时查询用到了 [Rxjava2.0 ][1]
 5. 列表RecyclerView适配器用的是我们的官方  [BaseRecyclerViewAdapterHelper][2]
 6. 获取App 应用大小 采用AIDL接口实现
-7. Google Play 下载地址 [https://play.google.com/store/apps/details?id=com.allen.appmanager][3]
+7.  [![Google Play 下载地址](http://developer.android.com/images/brand/en_app_rgb_wo_60.png "Download Memento Calendar from the Play Store")](https://play.google.com/store/apps/details?id=com.allen.appmanager)
 8. App本地下载地址[https://o6bw6tmdt.qnssl.com/app-release.apk][4]
 
 9. ![enter description here](./image/image1.png)
