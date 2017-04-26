@@ -57,6 +57,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private float cachesize;
     private float codesize;
     private float totalsize;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         Observable<List<AppInfo>> observable = Observable.create(new ObservableOnSubscribe<List<AppInfo>>() {
             @Override
             public void subscribe(ObservableEmitter<List<AppInfo>> appInfo) throws Exception {
+
                 appInfo.onNext(queryAppInfo());
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());

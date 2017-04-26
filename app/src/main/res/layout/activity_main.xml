@@ -17,18 +17,52 @@
   ~  */
   -->
 
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <Toolbar
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     style="?android:attr/toolbarStyle"></Toolbar>
- <android.support.v7.widget.RecyclerView
+ <RelativeLayout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
      android:layout_width="match_parent"
      android:layout_height="match_parent"
- android:id="@+id/recyclerView"/>
+     android:id="@+id/relativeLayout"
+     tools:showIn="@layout/activty_getsymbols">
+
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/recyclerView"
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      />
+
+  <TextView
+      android:id="@+id/tv_letter_overlay"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:background="@mipmap/icon_search_tag"
+      android:gravity="center"
+      android:textColor="@android:color/white"
+      android:textSize="30sp"
+      android:textStyle="bold"
+      android:text="A"
+      android:visibility="gone"
+      android:paddingRight="@dimen/dimen_8_dip"
+      />
+
+
+  <com.wattforex.view.SideLetterBar
+      android:id="@+id/side_letter_bar"
+      android:layout_width="@dimen/dimen_20_dip"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_centerVertical="true"
+      tools:ignore="RtlHardcoded"/>
+ </RelativeLayout>
 
 </FrameLayout>
