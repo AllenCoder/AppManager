@@ -9,7 +9,7 @@
 8. App本地下载地址[https://o6bw6tmdt.qnssl.com/app-release.apk][4]
 
 9. ![enter description here](./image/device-2017-04-28-154356.png)
-10. ![enter description here](./image/device-2017-04-28-154356.png)
+10. ![enter description here](./image/device-2017-04-28-154433.png)
 11. ![enter description here](./image/device-2017-04-28-154500.png)
 ## 效果图
 
