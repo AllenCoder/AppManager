@@ -35,19 +35,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.jakewharton.rxbinding2.widget.RxTextView;
+import com.jakewharton.rxbinding2.widget.TextViewTextChangeEvent;
 
 import java.lang.reflect.Method;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -61,28 +68,37 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private List<AppInfo> mlistAppInfo = new ArrayList<>();
+    private List<AppInfo> mCopylistAppInfo ;
     private AppManagerAdapter adapter;
     private String signNumber;
     private float datasize;
     private float cachesize;
     private float codesize;
     private float totalsize;
+    private ProgressBar progressBar;
+    private EditText mEtRxJava;
+    private long INTERVAL=1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        adapter = new AppManagerAdapter(mlistAppInfo);
+        mCopylistAppInfo= new ArrayList<>(mlistAppInfo);
+        adapter = new AppManagerAdapter(mCopylistAppInfo);
+
         adapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.addItemDecoration(new DividerGridItemDecoration(MainActivity.this,R.drawable.divider));
         mRecyclerView.setAdapter(adapter);
+
+
         Observable<List<AppInfo>> observable = Observable.create(new ObservableOnSubscribe<List<AppInfo>>() {
             @Override
             public void subscribe(ObservableEmitter<List<AppInfo>> appInfo) throws Exception {
+                progressBar.setVisibility(View.VISIBLE);
                 appInfo.onNext(queryAppInfo());
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
@@ -95,7 +111,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             //观察者接收到通知,进行相关操作
             public void onNext(List<AppInfo> aLong) {
+                mCopylistAppInfo.clear();
+                mCopylistAppInfo.addAll(aLong);
+                progressBar.setVisibility(View.GONE);
                 adapter.notifyDataSetChanged();
+                adapter.isFirstOnly(true);
             }
 
             @Override
@@ -113,12 +133,86 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 if (view.getId() == R.id.btCopy) {
-                    onClick(mlistAppInfo.get(position));
+                    onClick(mCopylistAppInfo.get(position));
                 }
             }
         });
+        RxTextView.textChangeEvents(mEtRxJava)
+                .debounce(INTERVAL, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<TextViewTextChangeEvent>() {
+
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+
+                    @Override
+                    public void onSubscribe(Disposable disposable) {
+
+                    }
+
+                    @Override
+                    public void onNext(TextViewTextChangeEvent textViewTextChangeEvent) {
+                        rxJavaSearch(textViewTextChangeEvent.text().toString());
+                    }
+                });
     }
 
+    private void rxJavaSearch(String s) {
+        List<AppInfo> searchInfo = new ArrayList<>();
+        if (!TextUtils.isEmpty(s)){
+            for (AppInfo appInfo: mlistAppInfo) {
+                if (appInfo.getPkgName().contains(s)||appInfo.getAppLabel().contains(s)){
+                    searchInfo.add(appInfo);
+                }
+            }
+            if (searchInfo.size()>0){
+                mCopylistAppInfo.clear();
+                mCopylistAppInfo.addAll(searchInfo);
+                adapter.notifyDataSetChanged();
+            }else {
+                mCopylistAppInfo.clear();
+                mCopylistAppInfo.addAll(mlistAppInfo);
+                adapter.notifyDataSetChanged();
+            }
+        }else {
+            mCopylistAppInfo.clear();
+            mCopylistAppInfo.addAll(mlistAppInfo);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    private void initToolbar(){
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+//        //添加溢出菜单
+//        toolbar.inflateMenu(R.menu.setting_menu);
+//        // 添加菜单点击事件
+//        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                switch (item.getItemId()){
+//                    case R.id.item_setting:
+//                        //点击设置菜单
+//                        break;
+//                }
+//                return false;
+//            }
+//        });
+
+    }
 
     // 获得所有启动Activity的信息，类似于Launch界面
     public List<AppInfo> queryAppInfo() {
@@ -176,6 +270,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        progressBar = (ProgressBar) findViewById(R.id.loading_progress);
+        mEtRxJava = (EditText) findViewById(R.id.mEtRxJava);
     }
 
     private String getVersionName(String packageName) {
@@ -259,7 +355,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
     //    //aidl文件形成的Bindler机制服务类
     public class PkgSizeObserver extends IPackageStatsObserver.Stub {
         private AppInfo appInfo;
@@ -280,7 +375,10 @@ public class MainActivity extends AppCompatActivity {
             datasize = pStats.dataSize;  //数据大小
             codesize = pStats.codeSize;  //应用程序大小
             totalsize = cachesize + datasize + codesize;
-            appInfo.setTotalSize("apk总size "+totalsize+"");
+            DecimalFormat format = new DecimalFormat("#0.00");
+
+            final float v = totalsize / 1024 / 1024;
+            appInfo.setTotalSize("apk总size "+format.format(v) +"M");
             Log.i("PkgSizeObserver", "cachesize--->"+cachesize+" datasize---->"+datasize+ " codeSize---->"+codesize)  ;
         }
     }

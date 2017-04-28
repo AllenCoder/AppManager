@@ -8,9 +8,9 @@
 7.  [![Google Play 下载地址](http://developer.android.com/images/brand/en_app_rgb_wo_60.png "Download Memento Calendar from the Play Store")](https://play.google.com/store/apps/details?id=com.allen.appmanager)
 8. App本地下载地址[https://o6bw6tmdt.qnssl.com/app-release.apk][4]
 
-9. ![enter description here](./image/image1.png)
-10. ![enter description here](./image/image2.png)
-
+9. ![enter description here](./image/device-2017-04-28-154356.png)
+10. ![enter description here](./image/device-2017-04-28-154356.png)
+11. ![enter description here](./image/device-2017-04-28-154500.png)
 ## 效果图
 
 

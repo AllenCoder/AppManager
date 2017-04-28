@@ -17,5 +17,6 @@
   -->
 
 <resources>
-    <string name="app_name">App文件管理器</string>
+    <string name="app_name">App管理器</string>
+    <string name="hint_input">请输入App名字或者包名搜索</string>
 </resources>
