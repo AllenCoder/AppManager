@@ -189,30 +189,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void initToolbar(){
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
-//        //添加溢出菜单
-//        toolbar.inflateMenu(R.menu.setting_menu);
-//        // 添加菜单点击事件
-//        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.item_setting:
-//                        //点击设置菜单
-//                        break;
-//                }
-//                return false;
-//            }
-//        });
-
-    }
 
     // 获得所有启动Activity的信息，类似于Launch界面
     public List<AppInfo> queryAppInfo() {
