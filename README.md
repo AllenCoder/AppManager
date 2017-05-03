@@ -7,11 +7,13 @@
 6. 获取App 应用大小 采用AIDL接口实现
 7.  [![Google Play 下载地址](http://developer.android.com/images/brand/en_app_rgb_wo_60.png "Download Memento Calendar from the Play Store")](https://play.google.com/store/apps/details?id=com.allen.appmanager)
 8. App本地下载地址[https://o6bw6tmdt.qnssl.com/app-release.apk][4]
+## 扫描下载地址
+ ![扫码地址下载](./image/1493776335.png)
 
 9. ![enter description here](./image/device-2017-04-28-154356.png)
 10. ![enter description here](./image/device-2017-04-28-154433.png)
 11. ![enter description here](./image/device-2017-04-28-154500.png)
-12. ![扫码地址下载](./image/1493776335.png)
+
 ## 效果图
 
 
