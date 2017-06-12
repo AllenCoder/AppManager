@@ -16,4 +16,4 @@
  *
  */
 
-include ':app'
+include ':app', ':kotlinapp'
