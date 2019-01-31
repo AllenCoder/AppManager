@@ -16,9 +16,9 @@ import com.chad.library.adapter.base.BaseViewHolder
  */
 
 class AppManagerAdapter : BaseQuickAdapter<AppInfo, AppManagerAdapter.ViewHolder> {
-    constructor(layoutResId: Int, data: List<AppInfo>) : super(R.layout.app_item, data) {}
+    constructor(layoutResId: Int, data: List<AppInfo>) : super(R.layout.app_item, data)
 
-    constructor(data: List<AppInfo>) : super(R.layout.app_item, data) {}
+    constructor(data: List<AppInfo>) : super(R.layout.app_item, data)
 
 
     override fun convert(helper: ViewHolder, item: AppInfo) {
