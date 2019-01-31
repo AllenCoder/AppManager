@@ -10,17 +10,11 @@
 ## 扫描下载地址
  ![扫码地址下载](./image/1493776335.png)
 ## 效果图
+<img width="240" height="320" src="./image/device-2017-04-28-154356.png"/>
+<img width="240" height="320" src="./image/device-2017-04-28-154433.png"/>
+<img width="240" height="320" src="./image/device-2017-04-28-154500.png"/>
 
-9. ![enter description here](./image/device-2017-04-28-154356.png)
-10. ![enter description here](./image/device-2017-04-28-154433.png)
-11. ![enter description here](./image/device-2017-04-28-154500.png)
-
-<figure class="third">
-    <img src="./image/device-2017-04-28-154356.png">
-    <img src="./image/device-2017-04-28-154433.png">
-    <img src="./image/device-2017-04-28-154500.png">
-</figure>
-
+ 
 
   [1]: https://github.com/ReactiveX/RxJava
   [2]: https://github.com/CymChad/BaseRecyclerViewAdapterHelper
