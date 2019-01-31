@@ -66,7 +66,7 @@ open class MainActivity : AppCompatActivity() {
 
         val observable = Observable.create(ObservableOnSubscribe<List<AppInfo>> { appInfo ->
             progressBar?.setVisibility(View.VISIBLE)
-            appInfo.onNext(queryAppInfo())
+            queryAppInfo()?.let { appInfo.onNext(it) }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
         val observer = object : Observer<List<AppInfo>> {
             override fun onSubscribe(d: Disposable) {

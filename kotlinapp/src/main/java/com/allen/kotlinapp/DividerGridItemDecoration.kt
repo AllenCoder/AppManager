@@ -40,7 +40,7 @@ class DividerGridItemDecoration : RecyclerView.ItemDecoration {
         }
     }
 
-    override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State?) {
+    override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         drawHorizontal(canvas, parent)
         drawVertical(canvas, parent)
     }
@@ -132,9 +132,9 @@ class DividerGridItemDecoration : RecyclerView.ItemDecoration {
         return false
     }
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State?) {
+    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         val spanCount = getSpanCount(parent)
-        val childCount = parent.adapter.itemCount
+        val childCount = parent.adapter?.itemCount?:0
         val itemPosition = (view.layoutParams as RecyclerView.LayoutParams).viewLayoutPosition
         if (isLastRaw(parent, itemPosition, spanCount, childCount)) { // 如果是最后一行，则不需要绘制底部
             outRect.set(0, 0, mDivider!!.intrinsicWidth, 0)
