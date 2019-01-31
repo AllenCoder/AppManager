@@ -15,7 +15,11 @@
 10. ![enter description here](./image/device-2017-04-28-154433.png)
 11. ![enter description here](./image/device-2017-04-28-154500.png)
 
-
+<figure class="third">
+    <img src="./image/device-2017-04-28-154356.png">
+    <img src="./image/device-2017-04-28-154433.png">
+    <img src="./image/device-2017-04-28-154500.png">
+</figure>
 
 
   [1]: https://github.com/ReactiveX/RxJava
