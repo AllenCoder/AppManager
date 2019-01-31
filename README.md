@@ -10,9 +10,10 @@
 ## 扫描下载地址
  ![扫码地址下载](./image/1493776335.png)
 ## 效果图
-<img width="375" height="640" src="./image/device-2017-04-28-154356.png"/>
-<img width="375" height="640" src="./image/device-2017-04-28-154433.png"/>
-<img width="375" height="640" src="./image/device-2017-04-28-154500.png"/>
+
+<figure class="third">
+    <img src="./image/device-2017-04-28-154356.png" width="200"/><img src="./image/device-2017-04-28-154433.png" width="200"/><img src="./image/device-2017-04-28-154500.png" width="200"/>
+</figure>
 
  
 
